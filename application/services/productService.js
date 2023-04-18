@@ -40,6 +40,14 @@ class ProductService{
         await this.productRepository.delete(id);
         return true;
     }
+
+    async findByNameProduct(nameProduct){
+        const productModel = this.productRepository.findByNameProduct(nameProduct);
+        if(!productModel)
+            return null;
+            
+        return productModel;
+    }
 }
 
 module.exports = ProductService;

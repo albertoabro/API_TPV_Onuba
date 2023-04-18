@@ -1,5 +1,6 @@
 const model = require ('../models/init-models');
 const sequelize = require('../database');
+const { Op } = require('sequelize');
 const Providers = model(sequelize);
 
 class ProviderRepository{
@@ -38,6 +39,16 @@ class ProviderRepository{
         return Providers.providers.destroy({
             where:{
                 idProvider: id
+            }
+        });
+    }
+
+    async findByNameProvider(name){
+        return Providers.providers.findAll({
+            where:{
+                nameProvider:{
+                    [Op.like]: name
+                }
             }
         });
     }
