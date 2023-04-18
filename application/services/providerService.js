@@ -40,14 +40,6 @@ class ProviderService{
         await this.providerRepository.delete(id);
         return true;
     }
-
-    async findByNameProvider(nameProvider){
-        const providerModel = this.providerRepository.findByNameProvider(nameProvider);
-        if(!providerModel)
-            return null;
-
-        return providerModel;
-    }
 }
 
 module.exports = ProviderService;

@@ -40,14 +40,6 @@ class ArticleService{
         await this.articleRepository.delete(id);
         return true;
     }
-
-    async findByNameArticle(nameArticle){
-        const articleModel = this.articleRepository.findByNameArticle(nameArticle);
-        if(!articleModel)
-            return null;
-
-        return articleModel;
-    }
 }
 
 module.exports = ArticleService;

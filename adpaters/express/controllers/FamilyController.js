@@ -52,16 +52,9 @@ async function remove(req, res){
 
 }
 
-async function findByNameFamily(req, res){
-    const {nameFamily} = req.params;
-    const families = await familyService.findByNameFamily(nameFamily);
-    res.json(families);
-}
-
 module.exports={
     findById,
     findAll,
-    findByNameFamily,
     create,
     update,
     remove,

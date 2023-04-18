@@ -40,14 +40,6 @@ class FamilyService{
         await this.familyRepository.delete(id);
         return true;
     }
-
-    async findByNameFamily(nameFamily){
-        const familyModel = this.familyRepository.findByNameFamily(nameFamily);
-        if(!familyModel)
-            return null;
-        
-        return familyModel;
-    }
 }
 
 module.exports = FamilyService;

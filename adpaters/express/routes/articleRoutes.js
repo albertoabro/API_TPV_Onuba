@@ -5,7 +5,6 @@ const router = express.Router();
 
 router.get('/articles/:id', articleController.findById);
 router.get('/articles', articleController.findAll);
-router.get('/articles/search/:nameArticle', articleController.findByNameArticle);
 router.post('/articles', articleController.create);
 router.put('/articles/:id', articleController.update);
 router.delete('/articles/:id', articleController.remove);

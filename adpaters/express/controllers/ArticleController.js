@@ -1,5 +1,5 @@
 const ArticleService = require('../../../application/services/articleService');
-const ArticleRepository = require('../../../infrastructure/persistence/repositories/articleRepository');
+const ArticleRepository = require('../../../infrastructure/persistence/repositories/infrastructure');
 const articleService = new ArticleService(new ArticleRepository());
 
 async function findById(req, res){
@@ -62,16 +62,9 @@ async function remove(req, res){
 
 }
 
-async function findByNameArticle(req, res){
-    const {nameArticle} = req.params;
-    const articles = await articleService.findByNameArticle(nameArticle);
-    res.json(articles);
-}
-
 module.exports={
     findById,
     findAll,
-    findByNameArticle,
     create,
     update,
     remove,

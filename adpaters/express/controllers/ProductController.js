@@ -60,16 +60,9 @@ async function remove(req, res){
 
 }
 
-async function findByNameProduct(req, res){
-    const{nameProduct} = req.params;
-    const products = await productService.findByNameProduct(nameProduct);
-    res.json(products);
-}
-
 module.exports={
     findById,
     findAll,
-    findByNameProduct,
     create,
     update,
     remove,

@@ -1,6 +1,5 @@
 const model = require ('../models/init-models');
 const sequelize = require('../database');
-const { Op } = require('sequelize');
 const Families = model(sequelize);
 
 class FamilyRepository{
@@ -36,16 +35,6 @@ class FamilyRepository{
         return Families.family.destroy({
             where:{
                 idFamily: id
-            }
-        });
-    }
-
-    async findByNameFamily(name){
-        return Families.family.findAll({
-            where:{
-                nameFamily:{
-                    [Op.like]:name
-                }
             }
         });
     }

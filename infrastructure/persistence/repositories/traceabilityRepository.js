@@ -40,13 +40,6 @@ class TraceabilityRepository{
             }
         });
     }
-
-    async getProductsFromTraceability(){
-        return Traceabilities.traceability.findAll({
-    
-            group: ['idTraceability']
-        })
-    }
 }
 
 module.exports = TraceabilityRepository;
