@@ -80,7 +80,6 @@ async function remove(req, res){
 
 async function findByUserName(req, res){
     const {userName} = req.params;
-    console.log("LLEGA: "+userName)
     const users = await userService.findByUserName(userName);
     res.json(users);
 }

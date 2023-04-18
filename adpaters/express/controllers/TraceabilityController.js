@@ -60,9 +60,15 @@ async function remove(req, res){
 
 }
 
+async function getProductsFromTraceability(req, res){
+    const traceabilities = await traceabilityService.getProductsFromTraceability();
+    res.json(traceabilities);
+}
+
 module.exports={
     findById,
     findAll,
+    getProductsFromTraceability,
     create,
     update,
     remove,

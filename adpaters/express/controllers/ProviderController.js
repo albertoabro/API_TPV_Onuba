@@ -60,9 +60,16 @@ async function remove(req, res){
 
 }
 
+async function findByNameProvider(req, res){
+    const{nameProvider} = req.params;
+    const providers = await providerService.findByNameProvider(nameProvider);
+    res.json(providers);
+}
+
 module.exports={
     findById,
     findAll,
+    findByNameProvider,
     create,
     update,
     remove,

@@ -40,6 +40,11 @@ class TraceabilityService{
         await this.traceabilityRepository.delete(id);
         return true;
     }
+
+    async getProductsFromTraceability(){
+        const TraceabilityModel = await this.traceabilityRepository.getProductsFromTraceability();
+        return TraceabilityModel;
+    }
 }
 
 module.exports = TraceabilityService;
