@@ -21,7 +21,6 @@ async function findAll(req, res) {
 async function create(req, res){
     const dataProvider = req.body;
     const provider = await providerService.create({
-        idProvider: dataProvider.idProvider,
         nameProvider: dataProvider.nameProvider,
         address: dataProvider.address,
         phone: dataProvider.phone,

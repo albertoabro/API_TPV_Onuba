@@ -20,9 +20,10 @@ async function findAll(req, res) {
 
 async function create(req, res){
     const dataProduct = req.body;
+    console.log(dataProduct.idProduct,dataProduct.nameProduct, dataProduct.idProvider);
     const product = await productService.create({
         nameProduct: dataProduct.nameProduct,
-        provider: dataProduct.provider,
+        provider: dataProduct.idProvider,
         category: dataProduct.category,
         price: dataProduct.price
     });

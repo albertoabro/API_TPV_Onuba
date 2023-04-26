@@ -1,5 +1,6 @@
 const model = require ('../models/init-models');
 const sequelize = require('../database');
+const article = require('../models/article');
 const Traceabilities = model(sequelize);
 class TraceabilityRepository{
     async findById(id){

@@ -27,7 +27,6 @@ class ProviderService{
     async update(provider){
         console.log(provider);
         const providerModel = await this.providerRepository.update(provider);
-        console.log(providerModel);
         return new Provider(providerModel);
     }
 

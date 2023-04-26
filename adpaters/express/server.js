@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const fs = require('fs');
 const rolRoutes = require('./routes/rolRoutes');
 const userRoutes = require('./routes/userRoutes');
 const articleRoutes = require('./routes/articleRoutes');
@@ -21,7 +22,7 @@ const corsOptions ={
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(morgan("dev"));
+app.use(morgan("dev", {stream: fs.createWriteStream('./access.log', {flags: 'a'})}));
 app.use(cors(corsOptions));
 app.use("/api/v1", rolRoutes);
 app.use("/api/v1", userRoutes);
