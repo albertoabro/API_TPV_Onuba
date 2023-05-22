@@ -14,6 +14,7 @@ module.exports = function(sequelize, DataTypes) {
     products: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      primaryKey: true,
       references: {
         model: 'product',
         key: 'idProduct'
@@ -38,10 +39,11 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "idTraceability" },
+          { name: "products" },
         ]
       },
       {
-        name: "products",
+        name: "traceability_ibfk_1_idx",
         using: "BTREE",
         fields: [
           { name: "products" },

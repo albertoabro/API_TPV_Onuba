@@ -26,6 +26,10 @@ module.exports = function(sequelize, DataTypes) {
     price: {
       type: DataTypes.DOUBLE,
       allowNull: false
+    },
+    stock: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   }, {
     sequelize,
@@ -41,7 +45,7 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "provider",
+        name: "product_ibfk_1_idx",
         using: "BTREE",
         fields: [
           { name: "provider" },

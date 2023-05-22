@@ -30,6 +30,10 @@ module.exports = function(sequelize, DataTypes) {
     numBatch: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+    stock: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   }, {
     sequelize,
@@ -45,7 +49,7 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "family",
+        name: "article_ibfk_1_idx",
         using: "BTREE",
         fields: [
           { name: "family" },
