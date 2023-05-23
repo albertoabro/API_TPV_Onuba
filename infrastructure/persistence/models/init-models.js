@@ -7,6 +7,7 @@ var _roles = require("./roles");
 var _terminal = require("./terminal");
 var _ticket = require("./ticket");
 var _traceability = require("./traceability");
+var _traceabilityproducts = require("./traceabilityproducts");
 var _type_user = require("./type_user");
 var _typepay = require("./typepay");
 var _users = require("./users");
@@ -20,6 +21,7 @@ function initModels(sequelize) {
   var terminal = _terminal(sequelize, DataTypes);
   var ticket = _ticket(sequelize, DataTypes);
   var traceability = _traceability(sequelize, DataTypes);
+  var traceabilityproducts = _traceabilityproducts(sequelize, DataTypes);
   var type_user = _type_user(sequelize, DataTypes);
   var typepay = _typepay(sequelize, DataTypes);
   var users = _users(sequelize, DataTypes);
@@ -28,12 +30,14 @@ function initModels(sequelize) {
   article.hasMany(ticket, { as: "tickets", foreignKey: "article"});
   article.belongsTo(family, { as: "family_family", foreignKey: "family"});
   family.hasMany(article, { as: "articles", foreignKey: "family"});
-  traceability.belongsTo(product, { as: "products_product", foreignKey: "products"});
-  product.hasMany(traceability, { as: "traceabilities", foreignKey: "products"});
+  traceabilityproducts.belongsTo(product, { as: "idProduct_product", foreignKey: "idProduct"});
+  product.hasMany(traceabilityproducts, { as: "traceabilityproducts", foreignKey: "idProduct"});
   product.belongsTo(providers, { as: "provider_provider", foreignKey: "provider"});
   providers.hasMany(product, { as: "products", foreignKey: "provider"});
   type_user.belongsTo(roles, { as: "rol_role", foreignKey: "rol"});
   roles.hasMany(type_user, { as: "type_users", foreignKey: "rol"});
+  traceabilityproducts.belongsTo(traceability, { as: "idTraceability_traceability", foreignKey: "idTraceability"});
+  traceability.hasMany(traceabilityproducts, { as: "traceabilityproducts", foreignKey: "idTraceability"});
   users.belongsTo(type_user, { as: "typeUser_type_user", foreignKey: "typeUser"});
   type_user.hasMany(users, { as: "users", foreignKey: "typeUser"});
   ticket.belongsTo(typepay, { as: "typePay_typepay", foreignKey: "typePay"});
@@ -50,6 +54,7 @@ function initModels(sequelize) {
     terminal,
     ticket,
     traceability,
+    traceabilityproducts,
     type_user,
     typepay,
     users,

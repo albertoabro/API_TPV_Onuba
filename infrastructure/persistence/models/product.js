@@ -2,7 +2,6 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('product', {
     idProduct: {
-      autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
@@ -45,7 +44,7 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "product_ibfk_1_idx",
+        name: "provider",
         using: "BTREE",
         fields: [
           { name: "provider" },
