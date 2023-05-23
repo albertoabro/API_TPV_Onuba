@@ -1,6 +1,5 @@
 const model = require ('../models/init-models');
 const sequelize = require('../database');
-const article = require('../models/article');
 const Traceabilities = model(sequelize);
 class TraceabilityRepository{
     async findById(id){
@@ -23,7 +22,6 @@ class TraceabilityRepository{
 
         return Traceabilities.traceability.update({
             article: newTraceability["article"],
-            products: newTraceability["products"],
             numberBatch: newTraceability["numberBatch"],
             expirationDate: newTraceability["expirationDate"]
         },
@@ -40,13 +38,6 @@ class TraceabilityRepository{
                 idTraceability: id
             }
         });
-    }
-
-    async getProductsFromTraceability(){
-        return Traceabilities.traceability.findAll({
-    
-            group: ['idTraceability']
-        })
     }
 }
 
