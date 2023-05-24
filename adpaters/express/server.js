@@ -13,6 +13,7 @@ const typeUserRoutes = require('./routes/typeUserRoutes');
 const traceabilityRoutes = require('./routes/traceabilityRoutes');
 const familyRoutes = require('./routes/familyRoutes');
 const terminalRoutes = require('./routes/terminalRoutes');
+const traceabilityProductsRoutes = require('./routes/traceabilityProductRoutes');
 const app = express();
 const cors = require('cors');
 
@@ -36,5 +37,6 @@ app.use("/api/v1", typeUserRoutes);
 app.use("/api/v1", traceabilityRoutes);
 app.use("/api/v1", familyRoutes);
 app.use("/api/v1", terminalRoutes);
+app.use("/api/v1",traceabilityProductsRoutes);
 
 module.exports = app;
