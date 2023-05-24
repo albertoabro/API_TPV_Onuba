@@ -2,7 +2,6 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('providers', {
     idProvider: {
-      autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
@@ -19,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(8),
       allowNull: true
     },
-    products: {
+    productDescription: {
       type: DataTypes.STRING(50),
       allowNull: false
     }

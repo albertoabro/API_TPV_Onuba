@@ -11,14 +11,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    products: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'product',
-        key: 'idProduct'
-      }
-    },
     numberBatch: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -38,13 +30,6 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "idTraceability" },
-        ]
-      },
-      {
-        name: "products",
-        using: "BTREE",
-        fields: [
-          { name: "products" },
         ]
       },
     ]

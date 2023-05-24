@@ -26,11 +26,15 @@ module.exports = function(sequelize, DataTypes) {
     },
     typeUser: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
         model: 'type_user',
         key: 'idTypeUser'
       }
+    },
+    passwordTPV: {
+      type: DataTypes.INTEGER,
+      allowNull: true
     }
   }, {
     sequelize,
