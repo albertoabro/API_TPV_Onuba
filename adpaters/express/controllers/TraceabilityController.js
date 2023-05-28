@@ -1,7 +1,7 @@
 const TraceabilityService = require('../../../application/services/traceabilityService');
 const TraceabilityRepository = require('../../../infrastructure/persistence/repositories/traceabilityRepository');
 const traceabilityService = new TraceabilityService(new TraceabilityRepository());
-
+const Api404 = require('../../../Error/Api404Error');
 async function findById(req, res){
     const {id} = req.params;
     const traceability = await traceabilityService.findById(id);
@@ -21,30 +21,12 @@ async function findAll(req, res) {
 async function create(req, res){
     const dataTraceability = req.body;
     const traceability = await traceabilityService.create({
+        idTraceability: dataTraceability.idTraceability,
         article: dataTraceability.article,
-        products: dataTraceability.products,
         numberBatch: dataTraceability.numberBatch,
         expirationDate: dataTraceability.expirationDate
     });
     res.status(201).json(traceability);
-}
-
-async function update(req, res){
-    const {id} = req.params;
-    const dataTraceability = req.body;
-    const traceability = await traceabilityService.findById(id);
-
-    if(!traceability){
-        res.status(404).send;
-        return;
-    }
-
-    traceability.article = dataTraceability.article;
-    traceability.products = dataTraceability.products;
-    traceability.numberBatch = dataTraceability.numberBatch;
-    traceability.expirationDate = dataTraceability.expirationDate;
-    const updatedTraceability = traceabilityService.update(traceability);
-    res.json(updatedTraceability);
 }
 
 async function remove(req, res){
@@ -60,10 +42,19 @@ async function remove(req, res){
 
 }
 
+async function findByNumberBatch(req, res){
+    const {numberBatch} = req.params;
+    const traceability = await traceabilityService.findByNumberBatch(numberBatch);
+    if(traceability==Api404)
+        res.json(null);
+
+    res.json(traceability);
+}
+
 module.exports={
     findById,
     findAll,
+    findByNumberBatch,
     create,
-    update,
     remove,
 };

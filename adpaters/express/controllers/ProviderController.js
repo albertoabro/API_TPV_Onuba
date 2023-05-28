@@ -21,10 +21,11 @@ async function findAll(req, res) {
 async function create(req, res){
     const dataProvider = req.body;
     const provider = await providerService.create({
+        idProvider: dataProvider.idProvider,
         nameProvider: dataProvider.nameProvider,
         address: dataProvider.address,
         phone: dataProvider.phone,
-        products: dataProvider.products
+        productDescription: dataProvider.productDescription
     });
     res.status(201).json(provider);
 }
@@ -41,7 +42,7 @@ async function update(req, res){
     provider.nameProvider = dataProvider.nameProvider;
     provider.address = dataProvider.address;
     provider.phone = dataProvider.phone;
-    provider.products = dataProvider.products;
+    provider.productDescription = dataProvider.productDescription;
     const updatedProvider = providerService.update(provider);
     res.json(updatedProvider);
 }

@@ -1,6 +1,10 @@
 const model = require ('../models/init-models');
 const sequelize = require('../database');
 const Traceabilities = model(sequelize);
+const Api400 = require('../../../Error/Api400Error');
+const Api404 = require('../../../Error/Api404Error');
+const Api500 = require('../../../Error/Api500Error');
+
 class TraceabilityRepository{
     async findById(id){
         return Traceabilities.traceability.findOne({
@@ -38,6 +42,19 @@ class TraceabilityRepository{
                 idTraceability: id
             }
         });
+    }
+
+    async findByNumberBatch(numberBatch){
+        const traceabilities = Traceabilities.traceability.findOne({
+            where:{
+                numberBatch: numberBatch
+            }
+        })
+                  
+        if(traceabilities == null)
+            throw Api404;
+
+        return traceabilities;
     }
 }
 

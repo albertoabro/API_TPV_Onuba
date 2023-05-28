@@ -6,16 +6,20 @@ class TraceabilityProductService{
     }
 
     async findById(id){
-        const TraceabilityModel = await this.traceabilityProductRepository.findById(id);
-        if(!TraceabilityModel)
+        const TraceabilityProductModel = await this.traceabilityProductRepository.findById(id);
+        if(!TraceabilityProductModel)
             return null;
         
-        return new TraceabilityProduct(TraceabilityModel);
+        return TraceabilityProductModel;
+    }
+
+    async findAll(){
+        return await this.traceabilityProductRepository.findAll();
     }
 
     async create(traceability){
-        const TraceabilityModel = await this.traceabilityProductRepository.save(traceability);
-        return new TraceabilityProduct(TraceabilityModel);
+        const TraceabilityProductModel = await this.traceabilityProductRepository.save(traceability);
+        return new TraceabilityProduct(TraceabilityProductModel);
     }
 }
 

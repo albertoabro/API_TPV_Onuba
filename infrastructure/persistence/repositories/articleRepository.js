@@ -27,7 +27,8 @@ class ArticleRepository{
             priceSales: newArticle["priceSales"],
             units: newArticle["units"],
             family: newArticle["family"],
-            numBatch: newArticle["numBatch"]
+            numBatch: newArticle["numBatch"],
+            stock:newArticle["stock"]
         },
         {
             where:{
@@ -52,6 +53,14 @@ class ArticleRepository{
                 }
             }
         });
+    }
+
+    async findByFamily(family){
+        return Articles.article.findAll({
+            where:{
+                family: family
+            }
+        })
     }
 }
 

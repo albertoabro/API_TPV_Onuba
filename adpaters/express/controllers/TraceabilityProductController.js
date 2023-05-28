@@ -11,9 +11,15 @@ async function findById(req, res){
         res.json(traceabilityProduct);
 }
 
+async function findAll(req, res){
+    const traceabilityProduct = await traceabilityProductsService.findAll();
+    res.json(traceabilityProduct);
+}
+
 async function create(req, res){
     const dataTraceability = req.body;
     const traceabilityProduct = await traceabilityProductsService.create({
+        idAuto: dataTraceability.idAuto,
         idTraceability: dataTraceability.idTraceability,
         idProduct: dataTraceability.idProduct
     });
@@ -22,6 +28,7 @@ async function create(req, res){
 
 module.exports={
     findById,
+    findAll,
     create,
 };
 

@@ -48,6 +48,11 @@ class ProductService{
             
         return productModel;
     }
+
+    async findByProvider(provider){
+        const productModel = this.productRepository.findByProvider(provider);
+        return productModel;
+    }
 }
 
 module.exports = ProductService;

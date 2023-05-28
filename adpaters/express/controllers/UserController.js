@@ -37,11 +37,13 @@ async function findAll(req, res) {
 async function create(req, res){
     const dataUser = req.body;
     const user = await userService.create({
+        idUser: dataUser.idUser,
         userName: dataUser.userName,
         password: dataUser.password,
         address: dataUser.address,
         phone: dataUser.phone,
-        typeUser: dataUser.typeUser
+        typeUser: dataUser.typeUser,
+        passwordTPV: dataUser.passwordTPV,
     });
     res.status(201).json(user);
 }
@@ -55,12 +57,14 @@ async function update(req, res){
         res.status(404).send;
         return;
     }
-
+    user.idUser = id;
     user.userName = dataUser.userName;
     user.password =  dataUser.password;
     user.address = dataUser.address;
     user.phone = dataUser.phone;
     user.typeUser = dataUser.typeUser;
+    user.passwordTPV = dataUser.passwordTPV;
+    
     const updatedUser = userService.update(user);
     res.json(updatedUser);
 }

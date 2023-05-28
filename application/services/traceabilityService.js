@@ -1,5 +1,5 @@
 const Traceability = require('../../domain/traceability');
-
+const Api404 = require('../../Error/Api404Error');
 class TraceabilityService{
     constructor(traceabilityRepository){
         this.traceabilityRepository=traceabilityRepository;
@@ -39,6 +39,14 @@ class TraceabilityService{
 
         await this.traceabilityRepository.delete(id);
         return true;
+    }
+
+    async findByNumberBatch(numberBatch){
+        const TraceabilityModel = await this.traceabilityRepository.findByNumberBatch(numberBatch);
+        if(TraceabilityModel == null)
+            return null;
+        
+        return new Traceability(TraceabilityModel);
     }
 }
 

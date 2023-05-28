@@ -37,6 +37,7 @@ class UserRepository{
             address: user["address"],
             phone: user["phone"],
             typeUser: user["typeUser"],
+            passwordTPV: user["passwordTPV"]
         },
         {
             where:{

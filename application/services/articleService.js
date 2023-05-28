@@ -48,6 +48,11 @@ class ArticleService{
 
         return articleModel;
     }
+
+    async findByFamily(family){
+        const articleModel = this.articleRepository.findByFamily(family);
+        return articleModel;
+    }
 }
 
 module.exports = ArticleService;

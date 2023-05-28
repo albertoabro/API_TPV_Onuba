@@ -25,7 +25,8 @@ class ProductRepository{
             nameProduct: newProduct["nameProduct"],
             provider: newProduct["provider"],
             category: newProduct["category"],
-            price: newProduct["price"]
+            price: newProduct["price"],
+            stock: newProduct["stock"]
         },
         {
             where:{
@@ -50,6 +51,14 @@ class ProductRepository{
                 }
             }
         });
+    }
+
+    async findByProvider(provider){
+        return Products.product.findAll({
+            where:{
+                provider: provider
+            }
+        })
     }
 }
 

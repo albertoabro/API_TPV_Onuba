@@ -37,17 +37,17 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "traceability_idx",
-        using: "BTREE",
-        fields: [
-          { name: "idTraceability" },
-        ]
-      },
-      {
         name: "product_idx",
         using: "BTREE",
         fields: [
           { name: "idProduct" },
+        ]
+      },
+      {
+        name: "traceability_idx",
+        using: "BTREE",
+        fields: [
+          { name: "idTraceability" },
         ]
       },
     ]

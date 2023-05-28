@@ -21,11 +21,13 @@ async function findAll(req, res) {
 async function create(req, res){
     const dataArticle = req.body;
     const article = await articleService.create({
+        idArticle: dataArticle.idArticle,
         nameSales: dataArticle.nameSales,
         priceSales: dataArticle.priceSales,
         units: dataArticle.units,
         family: dataArticle.family,
-        numBatch: dataArticle.numBatch
+        numBatch: dataArticle.numBatch,
+        stock: dataArticle.stock
     });
     res.status(201).json(article);
 }
@@ -39,12 +41,15 @@ async function update(req, res){
         res.status(404).send;
         return;
     }
-
+    
+    article.idArticle = id;
     article.nameSales = dataArticle.nameSales;
     article.priceSales = dataArticle.priceSales;
     article.units = dataArticle.units;
     article.family = dataArticle.family;
     article.numBatch = dataArticle.numBatch;
+    article.stock = dataArticle.stock;
+    
     const updatedArticle = articleService.update(article);
     res.json(updatedArticle);
 }
@@ -68,10 +73,17 @@ async function findByNameArticle(req, res){
     res.json(articles);
 }
 
+async function findByFamily(req, res){
+    const{idFamily} = req.params;
+    const articles = await articleService.findByFamily(idFamily);
+    res.json(articles);
+}
+
 module.exports={
     findById,
     findAll,
     findByNameArticle,
+    findByFamily,
     create,
     update,
     remove,

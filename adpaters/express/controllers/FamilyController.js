@@ -19,8 +19,11 @@ async function findAll(req, res) {
 }
 
 async function create(req, res){
-    const {nameFamily} = req.body;
-    const family = await familyService.create({nameFamily});
+    const dataFamily = req.body;
+    const family = await familyService.create({
+        idFamily: dataFamily.idFamily,    
+        nameFamily: dataFamily.nameFamily,
+    });
     res.status(201).json(family);
 }
 
@@ -34,6 +37,7 @@ async function update(req, res){
         return;
     }
 
+    family.id=id;
     family.nameFamily=nameFamily;
     const updatedFamily = familyService.update(family);
     res.json(updatedFamily);

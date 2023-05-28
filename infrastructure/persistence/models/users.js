@@ -17,12 +17,13 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     address: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.STRING(200),
       allowNull: true
     },
     phone: {
-      type: DataTypes.STRING(8),
-      allowNull: true
+      type: DataTypes.STRING(12),
+      allowNull: true,
+      unique: "phone_UNIQUE"
     },
     typeUser: {
       type: DataTypes.INTEGER,
@@ -33,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     passwordTPV: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(4),
       allowNull: true
     }
   }, {
@@ -55,6 +56,14 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "userName" },
+        ]
+      },
+      {
+        name: "phone_UNIQUE",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "phone" },
         ]
       },
       {

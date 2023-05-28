@@ -13,7 +13,8 @@ module.exports = function(sequelize, DataTypes) {
     },
     numberBatch: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      unique: "numberBatch_UNIQUE"
     },
     expirationDate: {
       type: DataTypes.DATE,
@@ -30,6 +31,14 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "idTraceability" },
+        ]
+      },
+      {
+        name: "numberBatch_UNIQUE",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "numberBatch" },
         ]
       },
     ]
