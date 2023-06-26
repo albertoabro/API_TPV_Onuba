@@ -33,7 +33,7 @@ async function update(req, res){
     const family = await familyService.findById(id);
 
     if(!family){
-        res.status(404).send;
+        res.status(404).send();
         return;
     }
 

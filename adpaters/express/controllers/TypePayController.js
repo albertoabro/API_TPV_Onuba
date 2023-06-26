@@ -30,7 +30,7 @@ async function update(req, res){
     const typePay = await typePayService.findById(id);
 
     if(!typePay){
-        res.status(404).send;
+        res.status(404).send();
         return;
     }
 

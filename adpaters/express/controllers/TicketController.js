@@ -40,7 +40,7 @@ async function update(req, res){
     const ticket = await ticketService.findById(id);
 
     if(!ticket){
-        res.status(404).send;
+        res.status(404).send();
         return;
     }
 

@@ -35,7 +35,7 @@ async function update(req, res){
     const dataProvider = req.body;
     const provider = await providerService.findById(id);
     if(!provider){
-        res.status(404).send;
+        res.status(404).send();
         return;
     }
     provider.idProvider = dataProvider.idProvider

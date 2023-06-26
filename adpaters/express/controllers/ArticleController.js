@@ -38,7 +38,7 @@ async function update(req, res){
     const article = await articleService.findById(id);
 
     if(!article){
-        res.status(404).send;
+        res.status(404).send();
         return;
     }
     

@@ -33,7 +33,7 @@ async function update(req, res){
     const typeUser = await typeUserService.findById(id);
 
     if(!typeUser){
-        res.status(404).send;
+        res.status(404).send();
         return;
     }
 

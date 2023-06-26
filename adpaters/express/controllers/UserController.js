@@ -21,7 +21,7 @@ async function findByCredentials(req, res){
     }
     const user = await userService.findByCredentials(credentials)
     if(!user){
-        res.status(404).send;
+        res.status(404).send();
     }
     else{
         res.json(user)
@@ -54,7 +54,7 @@ async function update(req, res){
     const user = await userService.findById(id);
 
     if(!user){
-        res.status(404).send;
+        res.status(404).send();
         return;
     }
     user.idUser = id;

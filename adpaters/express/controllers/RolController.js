@@ -31,7 +31,7 @@ async function update(req, res){
     const rol = await rolService.findById(id);
 
     if(!rol){
-        res.status(404).send;
+        res.status(404).send();
         return;
     }
 
